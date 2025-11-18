@@ -2,9 +2,9 @@ def calculate_bmr(weight_kg, height_cm, age, gender):
     gender = gender.lower()
     
     if gender == "male":
-        bmr = 88.362 + (13.397 * weight_kg) + (4.799 * height_cm) - (5.677 * age)
+        bmr =(10 * weight_kg) + (6.25 * height_cm) - (5 * age) + 5
     else:
-        bmr = 447.593 + (9.247 * weight_kg) + (3.098 * height_cm) - (4.330 * age)
+        bmr = (10 * weight_kg) + (6.25 * height_cm) - (5 * age) -161
     
     return round(bmr, 1)
 
