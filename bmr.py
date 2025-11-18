@@ -8,4 +8,3 @@ def calculate_bmr(weight_kg, height_cm, age, gender):
     
     return round(bmr, 1)
 
-print(calculate_bmr(90,154,34,"male"))
