@@ -29,6 +29,15 @@ def get_activity_multiplier(activity_level):
     "very_active": 1.725,
     "extra_active": 1.9
 }
+    activity_level = activity_level.lower()
+
+    if activity_level not in activity_levels:
+        return "Invalid choice . Please try again."
+    else: 
+        return activity_levels[activity_level]
+print(get_activity_multiplier("moderately_active"))
+print(get_activity_multiplier("SeDeNtArY"))
+
 
  
 
