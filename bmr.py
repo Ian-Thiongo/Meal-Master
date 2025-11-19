@@ -17,18 +17,21 @@ def calculate_tdee(bmr,activity_level):
 
 bmr = calculate_bmr(90,154,34,"male")
 tdee = calculate_tdee(bmr, 1.55)
-
-
-# activity_level = [
-#         {"Sedentary":1.2},
-#         {"Lightly_active":1.375},
-#         {"Moderately_active":1.55},
-#         {"Ver_active":1.725},
-#         {"Extra_active":1.9}
-#     ]
-
     
-print(f"BMR: {bmr}, TDEE: {tdee}")
+# print(f"BMR: {bmr}, TDEE: {tdee}")
+
+def get_activity_multiplier(activity_level):
+
+    activity_levels = {
+    "sedentary": 1.2,
+    "lightly_active": 1.375,
+    "moderately_active": 1.55,
+    "very_active": 1.725,
+    "extra_active": 1.9
+}
+
+ 
+
 
 
 
