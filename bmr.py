@@ -12,16 +12,10 @@ def calculate_bmr(weight_kg, height_cm, age, gender,):
 
 def calculate_tdee(bmr,activity_level):
     tdee = (bmr * activity_level)
-
     return tdee
 
-bmr = calculate_bmr(90,154,34,"male")
-tdee = calculate_tdee(bmr, 1.55)
-    
-# print(f"BMR: {bmr}, TDEE: {tdee}")
 
 def get_activity_multiplier(activity_level):
-
     activity_levels = {
     "sedentary": 1.2,
     "lightly_active": 1.375,
@@ -32,11 +26,23 @@ def get_activity_multiplier(activity_level):
     activity_level = activity_level.lower()
 
     if activity_level not in activity_levels:
-        return "Invalid choice . Please try again."
+        return None
     else: 
         return activity_levels[activity_level]
-print(get_activity_multiplier("moderately_active"))
-print(get_activity_multiplier("SeDeNtArY"))
+    
+bmr = calculate_bmr(90, 154, 34, "male")
+
+activity = "sedentary"
+multiplier = get_activity_multiplier(activity)
+
+if multiplier:  
+    tdee = calculate_tdee(bmr, multiplier)
+    print(f"BMR: {bmr} calories/day")
+    print(f"Activity Level: {activity}")
+    print(f"TDEE: {round(tdee, 1)} calories/day")
+else:
+    print("Invalid activity level!")
+
 
 
  
