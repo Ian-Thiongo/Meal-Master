@@ -53,7 +53,6 @@ def get_user_input():
     return weight, height, age, gender, activity
 
 
-weight, height, age, gender, activity = get_user_input()
 
 
 
