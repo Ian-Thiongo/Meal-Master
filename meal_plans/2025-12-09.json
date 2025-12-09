@@ -1,0 +1,14 @@
+{
+  "date": "2025-12-09",
+  "tdee_target": 709.7750000000001,
+  "meals": [
+    {
+      "name": "BACON",
+      "servings": 6.0,
+      "calories": 3000.0,
+      "protein": 214.2,
+      "carbs": 0.0,
+      "fats": 214.2
+    }
+  ]
+}
