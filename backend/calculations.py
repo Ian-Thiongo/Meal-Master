@@ -23,13 +23,13 @@ def calculate_tdee(bmr, activity_level):
 def get_activity_multiplier(activity_level):
     activity_levels = {
         "sedentary": 1.2,
-        "lightly active": 1.375,
-        "moderately active": 1.55,
-        "very active": 1.725,
-        "extra active": 1.9,
+        "lightly_active": 1.375,        # Changed to underscore
+        "moderately_active": 1.55,      # Changed to underscore
+        "very_active": 1.725,           # Changed to underscore
+        "extra_active": 1.9,            # Changed to underscore
     }
-    activity_level = activity_level.lower()
-
+    activity_level = activity_level.lower().replace(" ", "_")  # Add this line
+    
     if activity_level not in activity_levels:
         return None
     else:
