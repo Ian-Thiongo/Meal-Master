@@ -1,6 +1,6 @@
-import { useAuth } from '../contexts/AuthContext';
-import { useNavigate } from 'react-router-dom';
-import './Dashboard.css';
+import { useAuth } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
+import "./Dashboard.css";
 
 function Dashboard() {
   const { user, logout } = useAuth();
@@ -8,7 +8,7 @@ function Dashboard() {
 
   const handleLogout = () => {
     logout();
-    navigate('/login');
+    navigate("/login");
   };
 
   return (
@@ -32,7 +32,7 @@ function Dashboard() {
             <div className="stat-info">
               <h3>Daily Target</h3>
               <p className="stat-value">
-                {user?.tdee ? `${Math.round(user.tdee)} kcal` : 'Not set'}
+                {user?.tdee ? `${Math.round(user.tdee)} kcal` : "Not set"}
               </p>
             </div>
           </div>
@@ -42,7 +42,7 @@ function Dashboard() {
             <div className="stat-info">
               <h3>Weight</h3>
               <p className="stat-value">
-                {user?.weight_kg ? `${user.weight_kg} kg` : 'Not set'}
+                {user?.weight_kg ? `${user.weight_kg} kg` : "Not set"}
               </p>
             </div>
           </div>
@@ -52,7 +52,7 @@ function Dashboard() {
             <div className="stat-info">
               <h3>Height</h3>
               <p className="stat-value">
-                {user?.height_cm ? `${user.height_cm} cm` : 'Not set'}
+                {user?.height_cm ? `${user.height_cm} cm` : "Not set"}
               </p>
             </div>
           </div>
@@ -62,9 +62,11 @@ function Dashboard() {
             <div className="stat-info">
               <h3>Activity Level</h3>
               <p className="stat-value">
-                {user?.activity_level ? 
-                  user.activity_level.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase()) 
-                  : 'Not set'}
+                {user?.activity_level
+                  ? user.activity_level
+                      .replace("_", " ")
+                      .replace(/\b\w/g, (l) => l.toUpperCase())
+                  : "Not set"}
               </p>
             </div>
           </div>
@@ -74,32 +76,43 @@ function Dashboard() {
           <div className="action-card">
             <h3>🔍 Search Foods</h3>
             <p>Find foods from our database of 300,000+ items</p>
-            <button className="action-btn">Coming Soon</button>
+            <button className="action-btn" onClick={() => navigate("/search")}>
+              Search Now
+            </button>
           </div>
 
           <div className="action-card">
             <h3>📊 Today's Meals</h3>
             <p>View and manage your meal plan for today</p>
-            <button className="action-btn">Coming Soon</button>
+            <button className="action-btn" onClick={() => navigate("/search")}>
+              Search Now
+            </button>
           </div>
 
           <div className="action-card">
             <h3>📅 History</h3>
             <p>View your past meal plans and progress</p>
-            <button className="action-btn">Coming Soon</button>
+            <button className="action-btn" onClick={() => navigate("/search")}>
+              Search Now
+            </button>
           </div>
 
           <div className="action-card">
             <h3>⚙️ Profile Settings</h3>
             <p>Update your personal information and goals</p>
-            <button className="action-btn">Coming Soon</button>
+            <button className="action-btn" onClick={() => navigate("/search")}>
+              Search Now
+            </button>
           </div>
         </div>
 
         {!user?.tdee && (
           <div className="alert-box">
             <strong>⚠️ Complete Your Profile</strong>
-            <p>Add your weight, height, age, gender, and activity level to calculate your daily calorie target!</p>
+            <p>
+              Add your weight, height, age, gender, and activity level to
+              calculate your daily calorie target!
+            </p>
           </div>
         )}
       </div>

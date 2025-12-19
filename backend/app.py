@@ -8,6 +8,7 @@ from flask_jwt_extended import JWTManager
 from config import Config
 from models import db, bcrypt
 from auth import auth_bp
+from food_api import food_bp
 from calculations import calculate_bmr, calculate_tdee, get_activity_multiplier
 
 
@@ -31,6 +32,7 @@ def create_app():
     
      # Register blueprints
     app.register_blueprint(auth_bp, url_prefix='/api')
+    app.register_blueprint(food_bp, url_prefix='/api/food')
     # Health check endpoint
     @app.route('/api/health', methods=['GET'])
     def health_check():

@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
+import FoodSearch from './pages/FoodSearch';
 import ProtectedRoute from './components/ProtectedRoute';
 import './App.css';
 
@@ -12,10 +13,7 @@ function App() {
 
   return (
     <Routes>
-      {/* Public routes */}
       <Route path="/" element={<Home />} />
-      
-      {/* Auth routes - redirect to dashboard if already logged in */}
       <Route 
         path="/login" 
         element={user ? <Navigate to="/dashboard" /> : <Login />} 
@@ -24,8 +22,6 @@ function App() {
         path="/signup" 
         element={user ? <Navigate to="/dashboard" /> : <Signup />} 
       />
-      
-      {/* Protected routes - require login */}
       <Route
         path="/dashboard"
         element={
@@ -34,8 +30,14 @@ function App() {
           </ProtectedRoute>
         }
       />
-      
-      {/* Catch all - redirect to home */}
+      <Route
+        path="/search"
+        element={
+          <ProtectedRoute>
+            <FoodSearch />
+          </ProtectedRoute>
+        }
+      />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );

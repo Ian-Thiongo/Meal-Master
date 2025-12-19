@@ -4,6 +4,9 @@ Configuration for the Flask app and database
 
 import os
 from datetime import timedelta
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Get the base directory (where the backend folder is)
 basedir = os.path.abspath(os.path.dirname(__file__))
