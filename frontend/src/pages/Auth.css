@@ -112,3 +112,60 @@ button[type="submit"]:disabled {
 .auth-link a:hover {
   text-decoration: underline;
 }
+
+/* Google Login Button */
+.google-btn {
+  width: 100%;
+  padding: 14px 20px;
+  background: white;
+  color: #333;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: all 0.3s;
+  margin-bottom: 0;
+}
+
+.google-btn:hover:not(:disabled) {
+  background: #f8f9fa;
+  border-color: #ccc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.google-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.google-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 25px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.divider span {
+  padding: 0 15px;
+  color: #888;
+  font-size: 14px;
+  white-space: nowrap;
+}

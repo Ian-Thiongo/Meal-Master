@@ -6,6 +6,7 @@ import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import FoodSearch from './pages/FoodSearch';
 import Profile from './pages/Profile';
+import OAuthCallback from './pages/OAuthCallback';
 import ProtectedRoute from './components/ProtectedRoute';
 import './App.css';
 
@@ -47,6 +48,7 @@ function App() {
           </ProtectedRoute>
         }
       />
+      <Route path="/oauth/callback" element={<OAuthCallback />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );

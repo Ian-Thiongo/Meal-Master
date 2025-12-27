@@ -83,6 +83,33 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('token');
   };
 
+  // For OAuth callback - set token and fetch profile
+  const setTokenFromOAuth = async (newToken) => {
+    localStorage.setItem('token', newToken);
+    setToken(newToken);
+    
+    // Fetch user profile with new token
+    try {
+      const response = await fetch(`${API_URL}/api/profile`, {
+        headers: {
+          'Authorization': `Bearer ${newToken}`
+        }
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setUser(data);
+      }
+    } catch (error) {
+      console.error('Error fetching profile after OAuth:', error);
+    }
+  };
+
+  // Google login via backend redirect
+  const loginWithGoogle = () => {
+    window.location.href = `${API_URL}/api/oauth/google/login`;
+  };
+
   const updateProfile = async (updates) => {
     const response = await fetch(`${API_URL}/api/profile`, {
       method: 'PUT',
@@ -111,7 +138,9 @@ export const AuthProvider = ({ children }) => {
       login,
       signup,
       logout,
-      updateProfile
+      updateProfile,
+      setTokenFromOAuth,
+      loginWithGoogle
     }}>
       {children}
     </AuthContext.Provider>

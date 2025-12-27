@@ -10,6 +10,7 @@ from models import db, bcrypt
 from auth import auth_bp
 from food_api import food_bp
 from meals import meals_bp
+from oauth import oauth_bp, init_oauth
 from calculations import calculate_bmr, calculate_tdee, get_activity_multiplier
 
 
@@ -24,7 +25,10 @@ def create_app():
     db.init_app(app)
     bcrypt.init_app(app)
     jwt = JWTManager(app)
-    CORS(app)  # Allow requests from React frontend
+    CORS(app, supports_credentials=True)  # Allow requests from React frontend
+    
+    # Initialize OAuth
+    init_oauth(app)
 
     # Create database tables
     with app.app_context():
@@ -35,6 +39,7 @@ def create_app():
     app.register_blueprint(auth_bp, url_prefix='/api')
     app.register_blueprint(food_bp, url_prefix='/api/food')
     app.register_blueprint(meals_bp, url_prefix='/api/meals')
+    app.register_blueprint(oauth_bp, url_prefix='/api/oauth')
     # Health check endpoint
     @app.route('/api/health', methods=['GET'])
     def health_check():

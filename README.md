@@ -185,3 +185,5 @@ This project is licensed under the MIT License.
 - [USDA FoodData Central](https://fdc.nal.usda.gov/) for the comprehensive food database
 - Mifflin-St Jeor equation for BMR calculation
 
+
+
