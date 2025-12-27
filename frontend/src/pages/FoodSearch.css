@@ -1,7 +1,17 @@
 .food-search {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 30px;
   padding: 20px;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
+  min-height: calc(100vh - 80px);
+}
+
+.search-section {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 16px;
 }
 
 .food-search h2 {
@@ -30,13 +40,13 @@
 }
 
 .search-form input:focus {
-  border-color: #667eea;
+  border-color: #52b788;
   outline: none;
 }
 
 .search-form button {
   padding: 15px 30px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #52b788 0%, #40916c 100%);
   color: white;
   border: none;
   border-radius: 10px;
@@ -48,7 +58,7 @@
 
 .search-form button:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 5px 15px rgba(82, 183, 136, 0.4);
 }
 
 .search-form button:disabled {
@@ -70,9 +80,18 @@
   margin-bottom: 20px;
 }
 
+.success-message {
+  background: #d4edda;
+  color: #155724;
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #c3e6cb;
+}
+
 .food-results {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
 }
 
@@ -101,11 +120,11 @@
 }
 
 .food-category {
-  color: #667eea;
+  color: #52b788;
   font-size: 0.85em;
   margin: 10px 0;
   padding: 4px 10px;
-  background: #f0f0ff;
+  background: #e8f5e9;
   border-radius: 20px;
   display: inline-block;
 }
@@ -159,8 +178,34 @@
   margin-bottom: 15px;
 }
 
+.add-section {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.servings-input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.servings-input label {
+  font-size: 0.85em;
+  color: #666;
+}
+
+.servings-input input {
+  width: 60px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 14px;
+}
+
 .add-btn {
-  width: 100%;
+  flex: 1;
   padding: 12px;
   background: #27ae60;
   color: white;
@@ -172,12 +217,155 @@
   transition: background 0.3s;
 }
 
-.add-btn:hover {
+.add-btn:hover:not(:disabled) {
   background: #219a52;
+}
+
+.add-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .no-results {
   text-align: center;
   color: #666;
   padding: 40px;
+}
+
+/* Meal Plan Sidebar */
+.meal-plan-sidebar {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+}
+
+.meal-plan-sidebar h3 {
+  margin: 0 0 20px 0;
+  color: #333;
+  font-size: 1.3em;
+  border-bottom: 2px solid #52b788;
+  padding-bottom: 10px;
+}
+
+.plan-summary {
+  margin-bottom: 20px;
+}
+
+.calories-progress {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.calories-progress .consumed {
+  font-size: 2em;
+  font-weight: 700;
+  color: #333;
+}
+
+.calories-progress .divider {
+  color: #999;
+  font-size: 1.5em;
+}
+
+.calories-progress .target {
+  font-size: 1.1em;
+  color: #666;
+}
+
+.progress-bar {
+  height: 10px;
+  background: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 5px;
+  transition: width 0.3s ease;
+}
+
+.remaining {
+  text-align: center;
+  font-size: 0.9em;
+  color: #666;
+  margin: 0;
+}
+
+.meals-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.meal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.meal-info {
+  flex: 1;
+}
+
+.meal-name {
+  display: block;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95em;
+  margin-bottom: 3px;
+}
+
+.meal-details {
+  font-size: 0.8em;
+  color: #666;
+}
+
+.remove-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: #fee;
+  color: #c33;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.remove-btn:hover {
+  background: #fcc;
+}
+
+.no-meals {
+  text-align: center;
+  color: #999;
+  font-size: 0.9em;
+  padding: 20px 0;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .food-search {
+    grid-template-columns: 1fr;
+  }
+  
+  .meal-plan-sidebar {
+    position: static;
+    order: -1;
+  }
 }

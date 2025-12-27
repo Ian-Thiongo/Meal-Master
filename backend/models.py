@@ -105,14 +105,16 @@ class Meal(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     def to_dict(self):
-        """Convert meal to dictionary"""
+        """Convert meal to dictionary (for JSON responses)"""
         return {
             'id': self.id,
+            'meal_plan_id': self.meal_plan_id,
             'food_name': self.food_name,
             'fdc_id': self.fdc_id,
             'servings': self.servings,
             'calories': self.calories,
             'protein': self.protein,
             'carbs': self.carbs,
-            'fats': self.fats
+            'fats': self.fats,
+            'created_at': self.created_at.isoformat() if self.created_at else None
         }

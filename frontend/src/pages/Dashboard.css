@@ -14,7 +14,7 @@
 
 .dashboard-nav h1 {
   margin: 0;
-  color: #667eea;
+  color: #52b788;
   font-size: 1.8em;
 }
 
@@ -124,7 +124,7 @@
 
 .action-btn {
   padding: 12px 24px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #52b788 0%, #40916c 100%);
   color: white;
   border: none;
   border-radius: 8px;

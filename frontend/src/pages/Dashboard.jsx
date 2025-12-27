@@ -85,23 +85,23 @@ function Dashboard() {
             <h3>📊 Today's Meals</h3>
             <p>View and manage your meal plan for today</p>
             <button className="action-btn" onClick={() => navigate("/search")}>
-              Search Now
+              View Meals
             </button>
           </div>
 
           <div className="action-card">
-            <h3>📅 History</h3>
-            <p>View your past meal plans and progress</p>
+            <h3>🎯 Get Recommendations</h3>
+            <p>Get personalized food suggestions based on your goals</p>
             <button className="action-btn" onClick={() => navigate("/search")}>
-              Search Now
+              Explore
             </button>
           </div>
 
           <div className="action-card">
             <h3>⚙️ Profile Settings</h3>
             <p>Update your personal information and goals</p>
-            <button className="action-btn" onClick={() => navigate("/search")}>
-              Search Now
+            <button className="action-btn" onClick={() => navigate("/profile")}>
+              Edit Profile
             </button>
           </div>
         </div>

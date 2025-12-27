@@ -1,6 +1,6 @@
 .home {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #52b788 0%, #40916c 100%);
 }
 
 .home-nav {
@@ -36,12 +36,12 @@
 
 .nav-btn:hover {
   background: white;
-  color: #667eea;
+  color: #52b788;
 }
 
 .nav-btn.primary {
   background: white;
-  color: #667eea;
+  color: #52b788;
   border: 2px solid white;
 }
 
@@ -72,7 +72,7 @@
   display: inline-block;
   padding: 18px 40px;
   background: white;
-  color: #667eea;
+  color: #52b788;
   text-decoration: none;
   border-radius: 50px;
   font-size: 1.2em;
