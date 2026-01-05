@@ -3,6 +3,7 @@ import { useAuth } from './contexts/AuthContext';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import ForgotPassword from './pages/ForgotPassword';
 import Dashboard from './pages/Dashboard';
 import FoodSearch from './pages/FoodSearch';
 import Profile from './pages/Profile';
@@ -23,6 +24,10 @@ function App() {
       <Route 
         path="/signup" 
         element={user ? <Navigate to="/dashboard" /> : <Signup />} 
+      />
+      <Route 
+        path="/forgot-password" 
+        element={user ? <Navigate to="/dashboard" /> : <ForgotPassword />} 
       />
       <Route
         path="/dashboard"

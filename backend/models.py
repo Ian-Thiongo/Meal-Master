@@ -27,6 +27,10 @@ class User(db.Model):
     gender = db.Column(db.String(10), nullable=True)
     activity_level = db.Column(db.String(20), nullable=True)
     tdee = db.Column(db.Float, nullable=True)
+    
+    # Dietary preferences
+    is_vegetarian = db.Column(db.Boolean, default=False, nullable=True)
+    is_vegan = db.Column(db.Boolean, default=False, nullable=True)
 
     # Timestamps
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
@@ -55,6 +59,8 @@ class User(db.Model):
             'gender': self.gender,
             'activity_level': self.activity_level,
             'tdee': self.tdee,
+            'is_vegetarian': self.is_vegetarian or False,
+            'is_vegan': self.is_vegan or False,
             'created_at': self.created_at.isoformat() if self.created_at else None
         }
 
@@ -117,4 +123,30 @@ class Meal(db.Model):
             'carbs': self.carbs,
             'fats': self.fats,
             'created_at': self.created_at.isoformat() if self.created_at else None
+        }
+
+
+class VerificationCode(db.Model):
+    """Verification code model for email OTP verification"""
+    __tablename__ = 'verification_codes'
+
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), nullable=False, index=True)
+    code = db.Column(db.String(6), nullable=False)
+    purpose = db.Column(db.String(20), nullable=False)  # 'signup' or 'reset'
+    expires_at = db.Column(db.DateTime, nullable=False)
+    used = db.Column(db.Boolean, default=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def is_valid(self):
+        """Check if the code is still valid (not expired and not used)"""
+        return not self.used and datetime.utcnow() < self.expires_at
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'email': self.email,
+            'purpose': self.purpose,
+            'expires_at': self.expires_at.isoformat(),
+            'used': self.used
         }

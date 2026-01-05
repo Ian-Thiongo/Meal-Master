@@ -14,8 +14,8 @@ function Profile() {
     age: user?.age || '',
     gender: user?.gender || 'male',
     activity: user?.activity_level || 'moderately_active',
-    password: '',
-    confirmPassword: ''
+    isVegetarian: user?.is_vegetarian || false,
+    isVegan: user?.is_vegan || false
   });
   
   const [loading, setLoading] = useState(false);
@@ -23,9 +23,10 @@ function Profile() {
   const [success, setSuccess] = useState('');
 
   const handleChange = (e) => {
+    const { name, type, value, checked } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: type === 'checkbox' ? checked : value
     });
   };
 
@@ -33,19 +34,6 @@ function Profile() {
     e.preventDefault();
     setError('');
     setSuccess('');
-
-    // Validate passwords if changing
-    if (formData.password) {
-      if (formData.password !== formData.confirmPassword) {
-        setError('Passwords do not match');
-        return;
-      }
-      if (formData.password.length < 6) {
-        setError('Password must be at least 6 characters');
-        return;
-      }
-    }
-
     setLoading(true);
 
     try {
@@ -57,11 +45,11 @@ function Profile() {
       if (formData.age) updates.age = parseInt(formData.age);
       if (formData.gender) updates.gender = formData.gender;
       if (formData.activity) updates.activity = formData.activity;
-      if (formData.password) updates.password = formData.password;
+      updates.is_vegetarian = formData.isVegetarian;
+      updates.is_vegan = formData.isVegan;
 
       await updateProfile(updates);
       setSuccess('Profile updated successfully!');
-      setFormData(prev => ({ ...prev, password: '', confirmPassword: '' }));
     } catch (err) {
       setError(err.message);
     } finally {
@@ -192,33 +180,33 @@ function Profile() {
               </select>
             </div>
 
-            <h3>🔒 Change Password</h3>
-            <p className="section-desc">Leave blank to keep current password</p>
+            <h3>🥗 Dietary Preference <span className="optional-tag">Optional</span></h3>
+            <p className="section-desc">Let us know your dietary preferences for personalized recommendations</p>
 
-            <div className="form-row">
-              <div className="form-group">
-                <label>New Password</label>
+            <div className="form-group checkbox-group">
+              <label className="checkbox-label">
                 <input
-                  type="password"
-                  name="password"
-                  value={formData.password}
+                  type="checkbox"
+                  name="isVegetarian"
+                  checked={formData.isVegetarian}
                   onChange={handleChange}
-                  placeholder="Enter new password"
                   disabled={loading}
                 />
-              </div>
+                <span className="checkbox-text">I'm vegetarian 🥬</span>
+              </label>
+            </div>
 
-              <div className="form-group">
-                <label>Confirm Password</label>
+            <div className="form-group checkbox-group">
+              <label className="checkbox-label">
                 <input
-                  type="password"
-                  name="confirmPassword"
-                  value={formData.confirmPassword}
+                  type="checkbox"
+                  name="isVegan"
+                  checked={formData.isVegan}
                   onChange={handleChange}
-                  placeholder="Confirm new password"
                   disabled={loading}
                 />
-              </div>
+                <span className="checkbox-text">I'm vegan 🌱</span>
+              </label>
             </div>
 
             <button type="submit" className="save-btn" disabled={loading}>

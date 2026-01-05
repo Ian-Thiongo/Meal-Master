@@ -39,3 +39,10 @@ class Config:
     
     # Frontend URL for redirects
     FRONTEND_URL = os.environ.get('FRONTEND_URL') or 'http://localhost:5173'
+    
+    # Email Settings (for verification codes)
+    EMAIL_HOST = os.environ.get('EMAIL_HOST') or 'smtp.gmail.com'
+    EMAIL_PORT = os.environ.get('EMAIL_PORT') or 587
+    EMAIL_USERNAME = os.environ.get('EMAIL_USERNAME')
+    EMAIL_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+    EMAIL_FROM = os.environ.get('EMAIL_FROM')
