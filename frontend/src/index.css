@@ -179,12 +179,12 @@ input, select, textarea {
 }
 
 .btn-primary {
-  background-color: var(--text-primary);
+  background-color: #c45c26;
   color: var(--text-white);
 }
 
 .btn-primary:hover {
-  background-color: var(--bg-dark-secondary);
+  background-color: #a84d1f;
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
 }
@@ -192,12 +192,12 @@ input, select, textarea {
 .btn-secondary {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 2px solid #c45c26;
 }
 
 .btn-secondary:hover {
   background-color: var(--bg-secondary);
-  border-color: rgba(0, 0, 0, 0.2);
+  border-color: #a84d1f;
 }
 
 .btn-ghost {
