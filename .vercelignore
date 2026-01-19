@@ -1,0 +1,19 @@
+# Ignore Python files in root (legacy files, actual backend is in backend/)
+main.py
+main
+*.py
+src/
+requirements.txt
+test_*.py
+venv/
+meal_plans/
+
+# Backend directory (deployed separately on Render)
+backend/
+
+# Other
+.env
+.git
+.idea
+.vscode
+MEAL-MASTER2.0/
