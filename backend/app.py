@@ -25,7 +25,15 @@ def create_app():
     db.init_app(app)
     bcrypt.init_app(app)
     jwt = JWTManager(app)
-    CORS(app, supports_credentials=True)  # Allow requests from React frontend
+    
+    # Configure CORS to allow Vercel frontend and local development
+    CORS(app, 
+         resources={r"/api/*": {"origins": [
+             "https://meal-master-coral.vercel.app",
+             "http://localhost:5173",
+             "http://127.0.0.1:5173"
+         ]}},
+         supports_credentials=True)
     
     # Initialize OAuth
     init_oauth(app)
